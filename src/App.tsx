@@ -5,7 +5,7 @@ import { store } from './redux/app/store';
 import { colors } from './util/constant/colors';
 import { NavigationContainer } from '@react-navigation/native';
 import FlashMessage from 'react-native-flash-message';
-import MainStack from './navigation/MainStack';
+import MainStack from './navigation/MainStack/MainStack';
 
 const App = () => {
   return (
