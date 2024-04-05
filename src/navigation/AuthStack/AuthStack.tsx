@@ -3,12 +3,9 @@ import {  createStackNavigator } from '@react-navigation/stack'
 import Login from '../../screens/Login/Login';
 import Register from '../../screens/Register/Register';
 import ForgotPassword from '../../screens/ForgotPassword/ForgotPassword';
+import { AuthStackParamList } from '../../@types/navigation';
 
-export type AuthStackParamList={
-Login:undefined;
-Register:undefined;
-ForgotPassword:undefined;
-}
+
 
 const Stack = createStackNavigator<AuthStackParamList>();
 

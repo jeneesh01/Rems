@@ -20,4 +20,5 @@ export const colors = {
   darkSkeleton: '#CFCFD8',
   EditColor: '#D49D11',
   DropDown: '#4B4B4B',
+  grey:'#808080'
 };
