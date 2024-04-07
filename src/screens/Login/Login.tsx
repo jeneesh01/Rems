@@ -25,9 +25,12 @@ const Login = () => {
     navigation.navigate('ForgotPassword')
 
   }
+  const onSignUPPress=()=>{
+    navigation.navigate('Register')
+  }
   return (
     <LinearGradient
-      colors={[colors.primary7,colors.primary7,colors.DarkBgColor]}
+      colors={[colors.primary2,colors.primary3]}
       style={styles.container}>
       <SafeAreaView  style={{backgroundColor:colors.primary7,opacity:0}}/>
         <ScrollView showsVerticalScrollIndicator={false} keyboardDismissMode='interactive' keyboardShouldPersistTaps='handled' contentContainerStyle={{flexGrow:1}}>
@@ -44,11 +47,14 @@ const Login = () => {
       <CustomButton title='Login' viewStyle={{marginTop:30}}/> 
       <View
         style={styles.bottomMainContainer}>
-        <View
+        <TouchableOpacity
+        activeOpacity={1}
+        hitSlop={{top:10,right:10,bottom:10,left:10}}
+        onPress={onSignUPPress}
           style={styles.bottomContainer}>
         <SemiBoldText>Don't have an account?</SemiBoldText>
         <BoldText style={{color:colors.white,marginLeft:5}}>Sign Up Now</BoldText>
-        </View>
+        </TouchableOpacity>
       </View>
 
       </ScrollView>

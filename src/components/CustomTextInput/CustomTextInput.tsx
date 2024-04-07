@@ -75,7 +75,7 @@ export const styles = StyleSheet.create({
 textInput:{
     
     elevation: 3,
-    shadowColor: colors.white,
+    shadowColor: colors.black,
     shadowOffset: {height: 1, width: 0},
     shadowOpacity: 0.2,
     shadowRadius: 3,
@@ -87,7 +87,7 @@ textInput:{
 
 },textInputContainer:{
     height:50,
-    backgroundColor:'#DCBAF1',
+    backgroundColor:'#ccbdf8',
     borderWidth:1,
     padding:15,
     borderColor:colors.white,
@@ -96,7 +96,12 @@ textInput:{
     flexDirection:'row',
     alignItems:'center',
     justifyContent:'space-between',
-    marginBottom:15
+    marginBottom:15,
+    elevation: 3,
+    shadowColor: colors.black,
+    shadowOffset: {height: 1, width: 0},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
 
 
 }
