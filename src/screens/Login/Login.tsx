@@ -40,9 +40,9 @@ const Login = () => {
       <RegularText style={[styles.headerText,{marginBottom:50,marginTop:-5}]}>Glad to see you!</RegularText>
       <CustomTextInput placeholder='Email Address' value={email} setValue={setEmail} /> 
       <CustomTextInput placeholder='Password' value={password} setValue={setPassword} isPasseword secureTextEntry={showPass} onPress={onEyePress}/> 
-      <TouchableOpacity style={{}} hitSlop={{top:10,right:10,bottom:10,left:10}} onPress={onfpPress}>
+      {/* <TouchableOpacity style={{}} hitSlop={{top:10,right:10,bottom:10,left:10}} onPress={onfpPress}>
       <SemiBoldText style={styles.forgotPassword}>Forgot Password</SemiBoldText>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
         
       <CustomButton title='Login' viewStyle={{marginTop:30}}/> 
       <View

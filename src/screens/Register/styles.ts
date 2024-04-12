@@ -30,5 +30,26 @@ export const styles = StyleSheet.create({
             flex: 1,
             marginBottom: 50,
             marginTop: 30,
+    },
+    useTypeSelection:{
+        height:50,
+        backgroundColor:'#ccbdf8',
+        borderWidth:1,
+        padding:15,
+        borderColor:colors.white,
+        marginHorizontal:20,
+        borderRadius:10,
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between',
+        marginBottom:15,
+        elevation: 3,
+        shadowColor: colors.black,
+        shadowOffset: {height: 1, width: 0},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        width:200,
+        position:'relative'
+    
     }
 })
