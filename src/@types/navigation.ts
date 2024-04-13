@@ -7,6 +7,9 @@ export type MainStackParamList={
     Login:undefined;
         Register:undefined;
         ForgotPassword:undefined;
+        Home:undefined;
+        CitySelection:undefined;
+        Completed:undefined
     }
     
 
