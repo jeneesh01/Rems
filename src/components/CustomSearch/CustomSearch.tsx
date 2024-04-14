@@ -10,17 +10,15 @@ import React, {memo} from 'react';
 import CustomHeader from '../CustomHeader/CustomHeader';
 import {colors} from '../../util/constant/colors';
 import {images} from '../../util/constant/images';
-import {useAppSelector} from '../../redux/app/store';
 type props = {
   value: string;
   onValueChange: (a: string) => void;
 };
 const CustomSearch = ({value, onValueChange}: props) => {
-  const multiplier = useAppSelector(state => state.util.fontSizeMultiplier);
   return (
     <View style={styles.container}>
       <View style={styles.searchIconContainer}>
-        <Image style={styles.searchIconStyle} source={images.Seach} />
+        <Image style={styles.searchIconStyle} source={images.Search} />
       </View>
       <TextInput
         placeholder=""
@@ -30,7 +28,7 @@ const CustomSearch = ({value, onValueChange}: props) => {
         style={{
           flex: 1,
           color: colors.black,
-          fontSize: 16 * multiplier,
+          fontSize: 16 ,
         }}
       />
     </View>

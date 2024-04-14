@@ -13,6 +13,8 @@ import React, {memo} from 'react';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 import { colors } from '../../util/constant/colors';
 import SemiBoldText from '../Text/SemiBoldText';
+import { images } from '../../util/constant/images';
+import { CURRENT_HEIGHT, SCREEN_WIDTH } from '../../util/constant/responsive';
 
 type props = {
   containerStyle?: StyleProp<ViewStyle> | undefined;
@@ -66,24 +68,29 @@ const FormHeader = ({containerStyle, type, textStyle, onLongPress}: props) => {
           </SemiBoldText>
         </View>
       )}
-       {type == 3 && (
-        <View style={[styles.circularContainer, containerStyle]}>
+{type == 3 && (
+        <View
+          style={[
+            { alignItems: 'center', marginHorizontal: 20,marginTop:CURRENT_HEIGHT*0.3,justifyContent:'center'},
+            containerStyle,
+          ]}>
           <AnimatedCircularProgress
             size={74}
             width={3}
             fill={100}
             tintColor={colors.primary}
+            onAnimationComplete={() => console.log('onAnimationComplete')}
             backgroundColor={colors.DarkBgColor}
             style={{transform: [{rotate: '-90deg'}]}}
             children={() => (
-              <SemiBoldText
-                style={{transform: [{rotate: '90deg'}],fontSize:14}}>
-                Completed
-              </SemiBoldText>
+              <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                <Image style={styles.completeImage} source={images.Completed} />
+              </View>
             )}
           />
-          <SemiBoldText  style={[styles.titleStyle, textStyle]}>
-            Property Detail
+
+          <SemiBoldText style={[styles.titleStyle, textStyle,{marginTop:10,marginLeft:0}]}>
+             Completed
           </SemiBoldText>
         </View>
       )}

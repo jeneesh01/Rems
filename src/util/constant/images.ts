@@ -26,6 +26,8 @@ export const images = {
   History: require('../../assets/icons/history.png'),
   LOGO:require('../../assets/icons/remslogo.jpeg'),
   EditImageIcon: require('../../assets/icons/editImage.png'),
+  Completed: require('../../assets/icons/tick.png'),
+
 
 
 };

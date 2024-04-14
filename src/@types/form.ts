@@ -1,5 +1,7 @@
+import { ImagePickerResponse } from "react-native-image-picker";
+
 export interface IPropertyDetail {
-  property_images: [];
+  property_images: ImagePickerResponse;
   property_name:string;
   property_type:string;
   address:string;
@@ -9,4 +11,18 @@ export interface IPropertyDetail {
   zip:string;
   price:string;
   sqft:string;
+}
+export interface Asset {
+  base64?: string;
+  uri?: string;
+  width?: number;
+  height?: number;
+  originalPath?: string;
+  fileSize?: number;
+  type?: string;
+  fileName?: string;
+  duration?: number;
+  bitrate?: number;
+  timestamp?: string;
+  id?: string;
 }

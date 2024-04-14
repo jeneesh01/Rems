@@ -13,15 +13,17 @@ import { colors } from '../../util/constant/colors';
 import { images } from '../../util/constant/images';
 import { SCREEN_WIDTH } from '../../util/constant/responsive';
 import SemiBoldText from '../Text/SemiBoldText';
+import { IPropertyDetail } from '../../@types/form';
+import HCustomTextInput from '../CustomTextInput/HCustomTextInput';
 
 
 type props = {
-  isCitySelected: boolean;
   selectState: string;
   selectedCity: string;
+  propertyData:IPropertyDetail
 };
 
-const CustomCS = ({isCitySelected, selectedCity, selectState}: props) => {
+const CustomCS = ({ selectedCity, selectState,propertyData}: props) => {
   const navigation = useNavigation<navigationProp>();
   const onSelectCityPress = () => {
     navigation.navigate('CitySelection');
@@ -34,7 +36,8 @@ const CustomCS = ({isCitySelected, selectedCity, selectState}: props) => {
         onPress={onSelectCityPress}
         style={{
           marginHorizontal: 25,
-          marginBottom: isCitySelected ? 30 : 10,
+          marginBottom:  30,
+          marginTop:10
         }}>
         <View
           style={{
@@ -44,7 +47,7 @@ const CustomCS = ({isCitySelected, selectedCity, selectState}: props) => {
             marginBottom: 10,
           }}>
           <SemiBoldText
-            style={{color: isCitySelected ? colors.black : colors.black7,fontSize:14}}>
+            style={{color: colors.black,fontSize:14}}>
             Select City
           </SemiBoldText>
           <Image
@@ -57,50 +60,63 @@ const CustomCS = ({isCitySelected, selectedCity, selectState}: props) => {
             }}
           />
         </View>
-        {isCitySelected && (
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View>
-              <SemiBoldText style={{fontSize:12}}>State</SemiBoldText>
-              <SemiBoldText
-                numberOfLines={1}
-                style={{
-                  width: Math.min(SCREEN_WIDTH / 2.7, 180),
-                  marginVertical: 5,
-                  fontSize:14
-                }}>
-                {selectState}
+          <TouchableOpacity activeOpacity={1} onPress={onSelectCityPress} style={{ flexDirection:'row',justifyContent: 'space-between',alignItems:'center'}}>
+            <View style={styles.textInputContainer}>
+              <SemiBoldText style={styles.textInput} numberOfLines={1}>
+                {propertyData.city}
               </SemiBoldText>
-              <View
-                style={{
-                  width: Math.min(SCREEN_WIDTH / 2.6, 200),
-                  borderBottomWidth: 1,
-                }}
-              />
+
             </View>
-            <View>
-              <SemiBoldText style={{fontSize:12}}>City</SemiBoldText>
-              <SemiBoldText
-                numberOfLines={1}
-                style={{
-                  width: Math.min(SCREEN_WIDTH / 2.7, 180),
-                  marginVertical: 5,
-                  fontSize:14
-                }}>
-                {selectedCity}
+            <View style={styles.textInputContainer}>
+              <SemiBoldText style={styles.textInput} numberOfLines={1}>
+                {propertyData.state}
               </SemiBoldText>
-              <View
-                style={{
-                  width: Math.min(SCREEN_WIDTH / 2.6, 200),
-                  borderBottomWidth: 1,
-                }}
-              />
+
             </View>
-          </View>
-        )}
+
+          </TouchableOpacity>
       </TouchableOpacity>
     </View>
   );
 };
 
 export default memo(CustomCS);
-export const styles = StyleSheet.create({});
+export const styles = StyleSheet.create({
+  
+  textInput:{
+    
+    elevation: 3,
+    shadowColor: colors.black,
+    shadowOffset: {height: 1, width: 0},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    color:colors.black,
+    height:50,
+    width:SCREEN_WIDTH/3,
+    textAlign:'center',
+    alignItems:'center',
+    justifyContent:'center',
+
+
+   
+
+},textInputContainer:{
+    height:50,
+    backgroundColor:colors.DrawerHeader,
+    borderColor:colors.white,
+    borderWidth:1,
+    padding:15,
+    borderRadius:10,
+    flexDirection:'row',
+    marginBottom:15,
+    shadowColor: colors.black,
+    shadowOffset: {height: 1, width: 0},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    width:SCREEN_WIDTH/2.5,
+    justifyContent:'center'
+
+
+
+}
+});

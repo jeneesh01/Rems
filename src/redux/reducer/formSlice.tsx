@@ -7,12 +7,11 @@ import {
 interface IFormSlice {
   propertyDetail: IPropertyDetail;
   header: number;
-  bottomSheetOpen: boolean;
 }
 
 const initialState: IFormSlice = {
   propertyDetail: {
-    property_images:[],
+    property_images:{},
     property_name:'',
     property_type:'',
     address:'',
@@ -26,7 +25,6 @@ const initialState: IFormSlice = {
   },
  
   header: 1,
-  bottomSheetOpen: false,
 };
 
 export const formSlice = createSlice({
@@ -41,16 +39,12 @@ export const formSlice = createSlice({
     setHeader: (state, action: PayloadAction<number>) => {
       state.header = action.payload;
     },
-    setBottomSheetOpen: (state, action: PayloadAction<boolean>) => {
-      state.bottomSheetOpen = action.payload;
-    },
   },
 });
 
 export const {
   setPropertyData,
   setHeader,
-  setBottomSheetOpen,
 } = formSlice.actions;
 
 export default formSlice.reducer;

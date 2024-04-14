@@ -1,4 +1,3 @@
-import {RouteProp, useRoute} from '@react-navigation/native';
 import * as Sentry from '@sentry/react-native';
 import React, {memo, useState} from 'react';
 import {
@@ -13,18 +12,17 @@ import {
   launchImageLibrary,
 } from 'react-native-image-picker';
 import Modal from 'react-native-modal';
-import {useDispatch, useSelector} from 'react-redux';
 import {styles} from './styles';
-import { RootState } from '../../redux/app/store';
+import { RootState, useAppDispatch } from '../../redux/app/store';
+import { addPropertyData } from '../../redux/action/form';
 
 type props = {
-  index: number;
+  showModal:boolean;
+  setShowModal:(a:boolean)=>void;
 };
-const AddPhoto = () => {
-  const [showModal, setShowModal] = useState<boolean>(false);
+const AddPhoto = ({showModal,setShowModal}:props) => {
+  const dispatch = useAppDispatch();
 
-  const route = useRoute<RouteProp<Record<string, props>, string>>();
-  const index = route.params.index;
   const ontakephotopress = async () => {
     setShowModal(false);
     const options: ImageLibraryOptions = {
@@ -43,6 +41,10 @@ const AddPhoto = () => {
         if (response && response.assets && response.assets[0]) {
           console.log('Image URI: ', response.assets[0].uri);
           const url = response.assets[0].uri;
+          dispatch(addPropertyData('property_images',response))
+    setShowModal(false)
+
+
         } else {
           console.log('Image URI is not available.');
         }
@@ -65,7 +67,9 @@ const AddPhoto = () => {
       } else {
         if (response && response.assets && response.assets[0]) {
           console.log('Image URI: ', response.assets[0].uri);
-          const url = response.assets[0].uri;
+          dispatch(addPropertyData('property_images',response))
+    setShowModal(false)
+          
         } else {
           console.log('Image URI is not available.');
         }

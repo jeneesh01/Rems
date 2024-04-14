@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, GestureResponderEvent, ImageSourcePropType, KeyboardTypeOptions, NativeSyntheticEvent, StyleProp, TextInput, TextInputSubmitEditingEventData, TextStyle, ViewStyle, Image, TouchableOpacity } from 'react-native'
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { colors } from '../../util/constant/colors';
 import { images } from '../../util/constant/images';
 import { SCREEN_WIDTH } from '../../util/constant/responsive';
@@ -23,10 +23,11 @@ type props={
       | undefined;
     setRef?: undefined | any;
     autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters' | undefined;
-    defaultValue?:string | undefined
+    defaultValue?:string | undefined;
+    editable?:boolean|undefined;
   
 }
-const CustomTextInput = ({  placeholder,
+const HCustomTextInput = ({  placeholder,
     value,
     setValue,
     keyboardType,
@@ -41,14 +42,25 @@ const CustomTextInput = ({  placeholder,
     onSubmitEditing,
     setRef,
     defaultValue,
+    editable,
     autoCapitalize,}:props) => {
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+
+        const handleFocus = () => {
+            setIsFocused(true);
+          };
+        
+          const handleBlur = () => {
+            setIsFocused(false);
+          };
+        
   return (
-    <View style={styles.textInputContainer}>
+    <TouchableOpacity activeOpacity={1} onPress={onPress} style={[styles.textInputContainer,{borderColor:isFocused?colors.primary:colors.white},containerstyle]}>
         
          <TextInput
             ref={setRef}
             placeholder={placeholder}
-            placeholderTextColor={colors.white}
+            placeholderTextColor={colors.black7}
             style={[
               styles.textInput,
               {
@@ -65,15 +77,15 @@ const CustomTextInput = ({  placeholder,
             cursorColor={colors.white}
             numberOfLines={numberOfLines}
             onSubmitEditing={onSubmitEditing}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            editable={editable}
           />
-          {
-            isPasseword && <TouchableOpacity style={{alignItems:'center',justifyContent:'center'}}onPress={onPress}><Image source={secureTextEntry?images.phide:images.pshow} style={{height:secureTextEntry?20:14,width:20,tintColor:colors.grey,marginRight:10}}/></TouchableOpacity>
-          }
-    </View>
+    </TouchableOpacity>
   )
 }
 
-export default memo(CustomTextInput)
+export default memo(HCustomTextInput)
 export const styles = StyleSheet.create({
 textInput:{
     
@@ -82,7 +94,7 @@ textInput:{
     shadowOffset: {height: 1, width: 0},
     shadowOpacity: 0.2,
     shadowRadius: 3,
-    color:colors.white,
+    color:colors.black,
     height:50,
     paddingLeft:5
 
@@ -90,17 +102,15 @@ textInput:{
 
 },textInputContainer:{
     height:50,
-    backgroundColor:'#ccbdf8',
+    backgroundColor:colors.DrawerHeader,
     borderWidth:1,
     padding:15,
-    borderColor:colors.white,
-    marginHorizontal:20,
+    marginHorizontal:25,
     borderRadius:10,
     flexDirection:'row',
     alignItems:'center',
     justifyContent:'space-between',
     marginBottom:15,
-    elevation: 3,
     shadowColor: colors.black,
     shadowOffset: {height: 1, width: 0},
     shadowOpacity: 0.2,

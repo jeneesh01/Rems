@@ -20,6 +20,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomHeader from '../../components/CustomHeader/CustomHeader';
 import CustomSearch from '../../components/CustomSearch/CustomSearch';
 import { setCityState } from '../../redux/reducer/authSlice';
+import { addPropertyData } from '../../redux/action/form';
 
 const CitySelection = () => {
   const [serachValue, setSerachValue] = useState<string>('');
@@ -58,6 +59,8 @@ const CitySelection = () => {
   };
   const onCityStatePress = (city: string, state: string) => {
     Keyboard.dismiss();
+    dispatch(addPropertyData('city',city));
+    dispatch(addPropertyData('state',state));
     dispatch(setCityState({city: city, states: state}));
     navigation.goBack();
   };

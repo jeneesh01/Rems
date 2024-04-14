@@ -6,14 +6,21 @@ import HCustomAdd from '../../components/CustomAdd/HCustomAdd'
 import Header from './Header/Header'
 import { useNavigation } from '@react-navigation/native'
 import { navigationProp } from '../../@types/navigation'
+import { useAppDispatch } from '../../redux/app/store'
+import { emptyProperty } from '../../redux/action/form'
 
 const Home = () => {
   const navigation = useNavigation<navigationProp>();
+  const dispatch =useAppDispatch();
+  const onAddIconPress=()=>{
+    dispatch(emptyProperty())
+    navigation.navigate('Form')
+  }
   return (
     <View style={styles.container}>
         <SafeAreaView style={{backgroundColor:colors.primary}}/>
         <Header />
-        <HCustomAdd viewStyle={{position:'absolute',bottom:80,right:50}} onPress={()=>navigation.navigate('Form')} />
+        <HCustomAdd viewStyle={{position:'absolute',bottom:50,right:40}} onPress={onAddIconPress} />
     </View>
   )
 }
