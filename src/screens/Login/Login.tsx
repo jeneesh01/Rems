@@ -30,7 +30,7 @@ const Login = () => {
   }
   return (
     <LinearGradient
-      colors={[colors.primary2,colors.primary3]}
+      colors={[colors.primary3,colors.primary]}
       style={styles.container}>
       <SafeAreaView  style={{backgroundColor:colors.primary7,opacity:0}}/>
         <ScrollView showsVerticalScrollIndicator={false} keyboardDismissMode='interactive' keyboardShouldPersistTaps='handled' contentContainerStyle={{flexGrow:1}}>

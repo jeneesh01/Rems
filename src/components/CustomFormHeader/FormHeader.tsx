@@ -50,7 +50,7 @@ const FormHeader = ({containerStyle, type, textStyle, onLongPress}: props) => {
           <AnimatedCircularProgress
             size={74}
             width={3}
-            fill={0}
+            fill={50}
             tintColor={colors.primary}
             backgroundColor={colors.DarkBgColor}
             style={{transform: [{rotate: '-90deg'}]}}
@@ -71,7 +71,7 @@ const FormHeader = ({containerStyle, type, textStyle, onLongPress}: props) => {
           <AnimatedCircularProgress
             size={74}
             width={3}
-            fill={0}
+            fill={100}
             tintColor={colors.primary}
             backgroundColor={colors.DarkBgColor}
             style={{transform: [{rotate: '-90deg'}]}}

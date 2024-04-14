@@ -7,5 +7,25 @@ export const images = {
     Arrow:require('../../assets/icons/back.png'),
     Recent:require('../../assets/icons/Recent.png'),
     SearchHealper:require('../../assets/icons/searchHelper.png'),
-    Search:require('../../assets/icons/search.png')
+    Search:require('../../assets/icons/search.png'),
+    LeftArrow:require('../../assets/icons/arrow-left.png'),
+    DrawerIcon: require('../../assets/icons/burger-bar.png'),
+    IndianFlag: require('../../assets/icons/IndianFlag.png'),
+    Heart: require('../../assets/icons/Heart.png'),
+    About: require('../../assets/icons/About.png'),
+    Setting: require('../../assets/icons/Settings.png'),
+    Persons: require('../../assets/icons/Persons.png'),
+    Reminder: require('../../assets/icons/Reminder.png'),
+    Langauge: require('../../assets/icons/LanugageChange.png'),
+    Home: require('../../assets/icons/Home.png'),
+    Seller: require('../../assets/icons/seller.png'),
+    PurchaseAmount: require('../../assets/icons/purchase.png'),
+    Expense: require('../../assets/icons/expence.png'),
+    Income: require('../../assets/icons/income.png'),
+    Broker: require('../../assets/icons/broker.png'),
+  History: require('../../assets/icons/history.png'),
+  LOGO:require('../../assets/icons/remslogo.jpeg'),
+  EditImageIcon: require('../../assets/icons/editImage.png'),
+
+
 };

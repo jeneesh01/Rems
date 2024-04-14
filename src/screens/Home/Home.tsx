@@ -2,18 +2,18 @@ import { View, Text, SafeAreaView } from 'react-native'
 import React, { memo } from 'react'
 import { styles } from './styles'
 import { colors } from '../../util/constant/colors'
-import FormHeader from '../../components/CustomFormHeader/FormHeader'
-import { useAppSelector } from '../../redux/app/store'
-import Navigator from './Navigator'
+import HCustomAdd from '../../components/CustomAdd/HCustomAdd'
+import Header from './Header/Header'
+import { useNavigation } from '@react-navigation/native'
+import { navigationProp } from '../../@types/navigation'
 
 const Home = () => {
-  const header = useAppSelector(state => state.form.header);
-
+  const navigation = useNavigation<navigationProp>();
   return (
     <View style={styles.container}>
-        <SafeAreaView  style={{backgroundColor:colors.BackgroundColor}}/>
-        <FormHeader type={header} />
-        <Navigator />
+        <SafeAreaView style={{backgroundColor:colors.primary}}/>
+        <Header />
+        <HCustomAdd viewStyle={{position:'absolute',bottom:80,right:50}} onPress={()=>navigation.navigate('Form')} />
     </View>
   )
 }

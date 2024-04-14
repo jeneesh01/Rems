@@ -43,7 +43,7 @@ const CustomHeader = ({title, onPress, container}: props) => {
         style={{
           width: Math.min(SCREEN_WIDTH - 50, 260),
         }}>
-        <SemiBoldText fontSize={20} style={{textAlign: 'center'}}>
+        <SemiBoldText style={{textAlign: 'center',fontSize:20}}>
           {title}
         </SemiBoldText>
       </View>
