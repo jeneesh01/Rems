@@ -17,7 +17,7 @@ const Header = () => {
     <View
       style={{
         backgroundColor: colors.primary,
-        height: 50,
+        height: 60,
         flexDirection: 'row',
         alignItems: 'center',
       }}>
