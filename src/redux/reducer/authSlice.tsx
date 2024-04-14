@@ -3,6 +3,7 @@ import {
   IS_FIRST_TIME,
   IS_LOGIN,
   RECENT_SEARCH,
+  USER_INFO,
   setStorageData,
 } from '../../services/storageHandler/storageHandler';
 export interface IAuthSlice {
@@ -12,6 +13,8 @@ export interface IAuthSlice {
   city: string;
   states: string;
   recentSearch: {city: string; state: string}[];
+  userInfo:any;
+  drawerIndex:number
 }
 
 const initialState: IAuthSlice = {
@@ -21,6 +24,8 @@ const initialState: IAuthSlice = {
   city: '',
   states: '',
   recentSearch: [],
+  userInfo:null,
+  drawerIndex:1
 };
 
 export const authSlice = createSlice({
@@ -61,10 +66,18 @@ export const authSlice = createSlice({
         setStorageData(RECENT_SEARCH, state.recentSearch);
       }
     },
+    setUserInfo: (state, action: PayloadAction<any>) => {
+      setStorageData(USER_INFO, state.userInfo);
+
+      state.userInfo = action.payload;
+    },
+    setDrawerIndex: (state, action: PayloadAction<any>) => {
+      state.drawerIndex = action.payload;
+    },
   },
 });
 
-export const {setIsFirstTime, setIsLogin, setCityState, setRecentSearch} =
+export const {setIsFirstTime, setIsLogin, setCityState, setRecentSearch,setUserInfo,setDrawerIndex} =
   authSlice.actions;
 
 export default authSlice.reducer;

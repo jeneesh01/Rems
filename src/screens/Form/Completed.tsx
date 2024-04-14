@@ -3,7 +3,6 @@ import React, {memo, useEffect} from 'react';
 import {useAppDispatch} from '../../redux/app/store';
 import {setHeader} from '../../redux/reducer/formSlice';
 import { colors } from '../../util/constant/colors';
-import FormHeader from '../../components/CustomFormHeader/FormHeader';
 import { useNavigation } from '@react-navigation/native';
 import { navigationProp } from '../../@types/navigation';
 
@@ -13,8 +12,11 @@ const Completed = () => {
   useEffect(() => {
     dispatch(setHeader(3));
     setTimeout(() => {
-      navigation.navigate('Drawer')
-    }, 2000);
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'Drawer'}],
+      });
+    }, 1500);
   }, []);
   return (
     <View style={{flex:1,backgroundColor:colors.BackgroundColor}}>

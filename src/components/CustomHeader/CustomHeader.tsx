@@ -13,6 +13,7 @@ import SemiBoldText from '../Text/SemiBoldText';
 import {SCREEN_WIDTH} from '../../util/constant/responsive';
 import {useNavigation} from '@react-navigation/native';
 import {navigationProp} from '../../@types/navigation';
+import { colors } from '../../util/constant/colors';
 type props = {
   title: string;
   onPress?: ((event: GestureResponderEvent) => void) | undefined;
@@ -29,8 +30,10 @@ const CustomHeader = ({title, onPress, container}: props) => {
         {
           flexDirection: 'row',
           alignItems: 'center',
-          marginLeft: 30,
-          marginVertical: 30,
+          paddingLeft: 30,
+          paddingVertical: 30,
+          justifyContent:'center',
+          backgroundColor:colors.DrawerHeader
         },
         container,
       ]}>
@@ -41,7 +44,8 @@ const CustomHeader = ({title, onPress, container}: props) => {
       </TouchableOpacity>
       <View
         style={{
-          width: Math.min(SCREEN_WIDTH - 50, 260),
+          flex:1,
+          marginRight:50
         }}>
         <SemiBoldText style={{textAlign: 'center',fontSize:20}}>
           {title}

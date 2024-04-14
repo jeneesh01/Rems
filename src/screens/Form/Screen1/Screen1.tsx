@@ -19,7 +19,7 @@ import CustomButton from '../../../components/CustomButton/CustomButton';
 
 const Screen1 = () => {
   const propertyData = useAppSelector((state)=>state.form.propertyDetail);
-  const imageUri = propertyData?.property_images?.assets?.[0]?.uri ?? '';
+  const imageUri = propertyData?.property_images[0]?.uri ?? '';
   const [showModal, setShowModal] = useState<boolean>(false);
     const navigation = useNavigation<navigationProp>();
     useEffect(() => {
@@ -65,13 +65,13 @@ const Screen1 = () => {
 
       <View style={{alignItems:'center'}}>
 
-      <TouchableOpacity activeOpacity={1} onPress={()=>setShowModal(true)} style={{height:90,width:90,borderWidth:1,borderColor:colors.DarkBgColor,borderRadius:100,alignItems:'center',justifyContent:'center',marginBottom:50}}>
+      <TouchableOpacity activeOpacity={1} onPress={()=>setShowModal(true)} style={{height:100,width:100,borderWidth:1,borderColor:colors.DarkBgColor,borderRadius:100,alignItems:'center',justifyContent:'center',marginBottom:50}}>
         {
           imageUri.length>0 ?
-          <Image source={{uri:imageUri}} style={{height:88,width:88,borderRadius:100}} />:
-        <Image source={images.LOGO} style={{height:88,width:88,borderRadius:100}} />
+          <Image source={{uri:imageUri}} style={{height:98,width:98,borderRadius:100}} />:
+        <Image source={images.LOGO} style={{height:98,width:98,borderRadius:100}} />
         }
-        <View style={{position:'absolute',height:30,width:30,borderRadius:100,borderWidth:2,backgroundColor:colors.DarkBgColor,borderColor:colors.white,alignItems:'center',justifyContent:'center',bottom:0,right:-5}}>
+        <View style={{position:'absolute',height:36,width:36,borderRadius:100,borderWidth:2,backgroundColor:colors.DarkBgColor,borderColor:colors.white,alignItems:'center',justifyContent:'center',bottom:0,right:-5}}>
 
         <Image source={images.EditImageIcon} style={{height:14,width:14}} />
         </View>

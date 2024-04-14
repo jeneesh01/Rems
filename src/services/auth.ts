@@ -2,7 +2,18 @@
   
   const login = async (body: any) => {
     return instanceWithoutAuth
-      .post('api/v1/auth/login', body)
+      .post('user/login', body)
+      .then(res => {
+        instanceWithAuth.defaults.headers.common.Authorization = `Bearer ${res.data?.token}`;
+        return res.data;
+      })
+      .catch(e => {
+        console.log('error in login api ', e);
+      });
+  };
+  const register = async (body: any) => {
+    return instanceWithoutAuth
+      .post('user/register', body)
       .then(res => {
         instanceWithAuth.defaults.headers.common.Authorization = `Bearer ${res.data?.token}`;
         return res.data;
@@ -17,7 +28,6 @@
       .patch('api/v1/auth/logout')
       .then(res => {
         instanceWithAuth.defaults.headers.common.Authorization = '';
-        // console.log('result', res.data);
         return res.data;
       })
       .catch(e => {
@@ -112,5 +122,6 @@
     resetPassword,
     userAuthorize,
     updateProfile,
+    register
   };
   

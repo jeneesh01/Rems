@@ -21,6 +21,7 @@ import RegularText from '../Text/RegularText';
 import {CURRENT_HEIGHT, SCREEN_HEIGHT} from '../../util/constant/responsive';
 
 const CustomDrawerContent = ({props}: any) => {
+  
   const navigation = useNavigation<navigationProp>();
   return (
     <ScrollView

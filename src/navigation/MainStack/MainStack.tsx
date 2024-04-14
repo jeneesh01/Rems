@@ -9,14 +9,22 @@ import CitySelection from '../../screens/CitySelection/CitySelection';
 import Completed from '../../screens/Form/Completed';
 import Form from '../../screens/Form/Form';
 import Drawer from '../Drawer/Drawer';
+import PropertyScreen from '../../components/CustomProperty/PropertyScreen';
+import { useAppDispatch } from '../../redux/app/store';
+import SplashScreen from '../../screens/SplashScreen/SplashScreen';
+import Settings from '../../screens/Settings/Settings';
+import Home from '../../screens/Home/Home';
 
 
 const Stack = createStackNavigator<MainStackParamList>();
 
 const MainStack = () => {
+  const dispatch = useAppDispatch();
 
   return (
     <Stack.Navigator screenOptions={{headerShown:false}}>
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
+
         <Stack.Screen name="Drawer" component={Drawer} />
         <Stack.Screen name='Auth' component={AuthStack} />
         <Stack.Screen name='Login' component={Login} />
@@ -25,6 +33,13 @@ const MainStack = () => {
         <Stack.Screen name='CitySelection' component={CitySelection} />
         <Stack.Screen name='Completed' component={Completed} />
         <Stack.Screen name="Form" component={Form} />
+        <Stack.Screen name="Home" component={Home} />
+
+        <Stack.Screen name="Property" component={PropertyScreen} />
+        <Stack.Screen name="Settings" component={Settings} />
+
+        
+
 
 
     </Stack.Navigator>

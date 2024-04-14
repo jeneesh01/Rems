@@ -6,12 +6,13 @@ import {
 } from '../../@types/form';
 interface IFormSlice {
   propertyDetail: IPropertyDetail;
+  propertyDetailList: IPropertyDetail[];
   header: number;
 }
 
 const initialState: IFormSlice = {
   propertyDetail: {
-    property_images:{},
+    property_images:[],
     property_name:'',
     property_type:'',
     address:'',
@@ -21,8 +22,25 @@ const initialState: IFormSlice = {
     zip:'',
     price:'',
     sqft:'',
+    _id:Date.now().toString()
+    
 
   },
+  propertyDetailList: [{
+    property_images:[],
+    property_name:'',
+    property_type:'',
+    address:'',
+    city:'',
+    state:'',
+    country:'india',
+    zip:'',
+    price:'',
+    sqft:'',
+    _id:Date.now().toString()
+
+  }],
+
  
   header: 1,
 };
@@ -33,7 +51,9 @@ export const formSlice = createSlice({
   reducers: {
     setPropertyData: (state, action: PayloadAction<IPropertyDetail>) => {
       state.propertyDetail = action.payload;
-      console.log('action pauload', action.payload);
+    },
+    setPropertyDataList: (state, action: PayloadAction<IPropertyDetail[]>) => {
+      state.propertyDetailList = action.payload;
     },
    
     setHeader: (state, action: PayloadAction<number>) => {
@@ -45,6 +65,7 @@ export const formSlice = createSlice({
 export const {
   setPropertyData,
   setHeader,
+  setPropertyDataList
 } = formSlice.actions;
 
 export default formSlice.reducer;

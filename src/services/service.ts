@@ -1,2 +1,3 @@
 import AuthService from './auth';
-export {AuthService}
+import PropertyService from './property'
+export {AuthService,PropertyService}

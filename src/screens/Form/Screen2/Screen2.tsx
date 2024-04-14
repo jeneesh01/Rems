@@ -4,7 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { navigationProp } from '../../../@types/navigation';
 import CustomButton from '../../../components/CustomButton/CustomButton';
 import HCustomTextInput from '../../../components/CustomTextInput/HCustomTextInput';
-import { addPropertyData } from '../../../redux/action/form';
+import { addProperty, addPropertyData } from '../../../redux/action/form';
 import { useAppDispatch, useAppSelector } from '../../../redux/app/store';
 import { setCityState } from '../../../redux/reducer/authSlice';
 import { setHeader } from '../../../redux/reducer/formSlice';
@@ -32,7 +32,19 @@ const Screen2 = () => {
     dispatch(setCityState({city: '', states: ''}));
   }, []);
 const onSubmitPress=()=>{
-  navigation.navigate('Completed')
+  dispatch(
+    addProperty(propertyData,success=>{
+      if(success){
+        navigation.navigate('Completed')
+
+      }else{
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'Drawer'}],
+        });
+      }
+    })
+  )
 }
     const navigation = useNavigation<navigationProp>();
     const dispatch = useAppDispatch();
@@ -80,3 +92,7 @@ const onSubmitPress=()=>{
 }
 
 export default memo(Screen2)
+
+function onsuccess(arg0: () => void): any {
+  throw new Error('Function not implemented.');
+}

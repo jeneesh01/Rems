@@ -27,7 +27,14 @@ export const images = {
   LOGO:require('../../assets/icons/remslogo.jpeg'),
   EditImageIcon: require('../../assets/icons/editImage.png'),
   Completed: require('../../assets/icons/tick.png'),
-
+  Location:require('../../assets/icons/locationarrow.png'),
+  BgLogo:require('../../assets/icons/bgLogo.jpeg'),
+  LogoHeader:require('../../assets/icons/logos.png'),
+  WhatsApp:require('../../assets/icons/Whatsapp.png'),
+  Account: require('../../assets/icons/Account.png'),
+  Support: require('../../assets/icons/Support.png'),
+  MyPlan: require('../../assets/icons/MyPlan.png'),
+  UserProfile:require('../../assets/icons/UserProfile.png')
 
 
 };

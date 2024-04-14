@@ -5,8 +5,10 @@ import {images} from '../../util/constant/images';
 import BoldText from '../Text/BoldText';
 import SemiBoldText from '../Text/SemiBoldText';
 import {styles} from './styles';
+import { useAppSelector } from '../../redux/app/store';
 
 const Header = () => {
+  const useInfo = useAppSelector((state)=>state.auth?.userInfo)
   const [isDDPressed, setIsDDPressed] = useState<boolean>(false);
   const onProfilePress = () => {
     setIsDDPressed(!isDDPressed);
@@ -25,11 +27,13 @@ const Header = () => {
             onPress={onProfilePress}>
             <View>
               <BoldText style={{fontSize:16}} >
-                Jeneesh S
+                {useInfo?.name ? useInfo?.name:"Jeneesh S"}
               </BoldText>
               <SemiBoldText
                 style={{marginTop: -2,fontSize:16}}>
-                jeneesh.developer@gmail.com
+                  {
+                    useInfo?.email ? useInfo?.email :"jeneesh@gmail.com"
+                  }
               </SemiBoldText>
             </View>
             {/* <View>

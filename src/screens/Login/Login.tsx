@@ -12,12 +12,16 @@ import MediumText from '../../components/Text/MediumText'
 import { useNavigation } from '@react-navigation/native'
 import { navigationProp } from '../../@types/navigation'
 import { CURRENT_HEIGHT } from '../../util/constant/responsive'
+import { useAppDispatch } from '../../redux/app/store'
+import { signIn, signUp } from '../../redux/action/auth'
 
 const Login = () => {
   const [email,setEmail] = useState<string>('');
   const [password,setPassword]= useState<string>('');
   const [showPass,setShowPass] = useState<boolean>(false);
   const navigation = useNavigation<navigationProp>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+const dispatch = useAppDispatch();
   const onEyePress=()=>{
     setShowPass(!showPass)
   }
@@ -27,6 +31,28 @@ const Login = () => {
   }
   const onSignUPPress=()=>{
     navigation.navigate('Register')
+  }
+  const onLoginPress=()=>{
+    console.log("1");
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'Drawer'}],
+    });
+    
+    // setIsLoading(true);
+    // dispatch(
+    //   signIn(
+    //     email,
+    //     password,
+    //     success => {
+    //       setIsLoading(false);
+    //       if(success){
+    //         navigation.navigate('Drawer')
+
+    //       }
+    //     },
+    //   ),
+    // );
   }
   return (
     <LinearGradient
@@ -44,7 +70,7 @@ const Login = () => {
       <SemiBoldText style={styles.forgotPassword}>Forgot Password</SemiBoldText>
       </TouchableOpacity> */}
         
-      <CustomButton title='Login' viewStyle={{marginTop:30}}/> 
+      <CustomButton title='Login' viewStyle={{marginTop:30}} isLoading={isLoading} onPress={onLoginPress}/> 
       <View
         style={styles.bottomMainContainer}>
         <TouchableOpacity

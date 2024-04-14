@@ -10,7 +10,11 @@ export type MainStackParamList={
         Drawer:undefined;
         CitySelection:undefined;
         Completed:undefined;
-        Form:undefined
+        Form:undefined;
+        Property:undefined;
+        SplashScreen:undefined;
+        Settings:undefined;
+        Home:undefined
     }
     
 

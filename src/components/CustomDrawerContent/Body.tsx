@@ -7,34 +7,38 @@ import SemiBoldText from '../Text/SemiBoldText';
 import {data} from './data';
 import {useNavigation} from '@react-navigation/native';
 import {navigationProp} from '../../@types/navigation';
-// 350
-const Body = () => {
-  const [isSelected, setIsSelected] = useState<number>(1);
-  const navigation = useNavigation<navigationProp>();
-  const onDrawerScreenPress = (id: number) => {
-    // if (id == isSelected) return;
+import { useAppDispatch, useAppSelector } from '../../redux/app/store';
+import { setDrawerIndex } from '../../redux/reducer/authSlice';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { DrawerParamList } from '../../navigation/Drawer/Drawer';
 
-    // // setIsSelected(id);
-    // if (id == 1) {
-    //   navigation.reset({
-    //     index: 0,
-    //     routes: [{name: 'Drawer'}],
-    //   });
-    // } else if (id == 2) {
-    //   navigation.navigate('Language', {
-    //     isLogin: true,
-    //   });
-    // } else if (id == 3) {
-    //   navigation.navigate('Reminder');
-    // } else if (id == 4) {
-    //   navigation.navigate('History');
-    // } else if (id == 5) {
-    //   navigation.navigate('Persons');
-    // } else if (id == 6) {
-    //   navigation.navigate('Settings');
-    // } else if (id == 7) {
-    //   // About
-    // }
+const Body = () => {
+  const drawerIndex= useAppSelector((state)=>state.auth?.drawerIndex);
+  const navigation = useNavigation<navigationProp>();
+  const disptach = useAppDispatch()
+;
+  const onDrawerScreenPress = (id: number) => {
+    if (id === drawerIndex) {
+      
+            return;
+    }
+
+    // setIsSelected(id);
+    if (id == 1) {
+      disptach(setDrawerIndex(1))
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'Home'}],
+      });
+    } else if (id == 2) {
+      disptach(setDrawerIndex(2))
+
+      navigation.navigate('Settings');
+    } else if (id == 3) {
+      disptach(setDrawerIndex(3))
+
+      // navigation.navigate('About');
+    } 
   };
 
   return (
@@ -60,7 +64,7 @@ const Body = () => {
               source={item.image}
               style={{
                 tintColor:
-                  isSelected == item.id ? colors.primary : colors.black,
+                drawerIndex == item.id ? colors.primary : colors.black,
                 height: item.height,
                 width: item.width,
               }}
@@ -69,7 +73,7 @@ const Body = () => {
 
           <SemiBoldText
             style={{
-              color: isSelected == item.id ? colors.primary : colors.black,
+              color: drawerIndex == item.id ? colors.primary : colors.black,
               marginLeft: 25,
               fontSize:14
             }}>

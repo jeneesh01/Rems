@@ -2,14 +2,16 @@ import {View, Text, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import React, {memo} from 'react';
 import {colors} from '../../../util/constant/colors';
 import {images} from '../../../util/constant/images';
-import {useNavigation} from '@react-navigation/native';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import { DrawerParamList } from '../../../navigation/Drawer/Drawer';
+import SemiBoldText from '../../../components/Text/SemiBoldText';
+import BoldText from '../../../components/Text/BoldText';
 type DrawerPRops = DrawerNavigationProp<DrawerParamList>;
 const Header = () => {
   const navigation = useNavigation<DrawerPRops>();
   const onDrawerIconPress = () => {
-    navigation.openDrawer();
+    navigation.dispatch(DrawerActions.openDrawer())
   };
   return (
     <View
@@ -17,7 +19,6 @@ const Header = () => {
         backgroundColor: colors.primary,
         height: 50,
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
       }}>
       <TouchableOpacity
@@ -32,15 +33,15 @@ const Header = () => {
           style={{height: 24, width: 24}}
         />
       </TouchableOpacity>
+      <BoldText style={{fontSize:18,marginLeft:10,color:colors.white}}>EstateHub</BoldText>
       {/* <TouchableOpacity
         style={{
-          marginHorizontal: 15,
+          marginLeft:-10
         }}
         hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
         <Image
-          source={images.Notification}
-          tintColor={colors.white}
-          style={{height: 22, width: 22}}
+          source={images.LogoHeader}
+          style={{height: 45, width: 200}}
         />
       </TouchableOpacity> */}
     </View>

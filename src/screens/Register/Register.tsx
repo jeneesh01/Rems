@@ -12,6 +12,8 @@ import { CURRENT_HEIGHT } from '../../util/constant/responsive'
 import { useNavigation } from '@react-navigation/native'
 import { navigationProp } from '../../@types/navigation'
 import { images } from '../../util/constant/images'
+import { useAppDispatch } from '../../redux/app/store'
+import { signUp } from '../../redux/action/auth'
 const userTypeData=[{
   id:1,
   user_type:'Buyer'
@@ -35,6 +37,9 @@ const Register = () => {
   const navigation = useNavigation<navigationProp>();
   const [isShowPopUp,setIsShowPopUp]= useState<boolean>(false);
   const [userType,setUserType]= useState<string>('User Type');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const dispatch = useAppDispatch();
   const onEyePress=()=>{
     setShowPass(!showPass)
   }
@@ -44,6 +49,31 @@ const Register = () => {
   const onUserTypePress=(usertype:string)=>{
     setIsShowPopUp(false);
     setUserType(usertype);
+  }
+  const onSignUPPress=()=>{
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'Drawer'}],
+    });
+    // setIsLoading(true);
+    // dispatch(
+    //   signUp(
+    //     email,
+    //     password,
+    //     Cpassword,
+    //     name,
+    //     userType,
+    //     success => {
+    //       setIsLoading(false);
+    //       if (success) {
+    //         navigation.reset({
+    //           index: 0,
+    //           routes: [{name: 'Drawer'}],
+    //         });
+    //       }
+    //     },
+    //   ),
+    // );
   }
   return (
     <LinearGradient
@@ -90,7 +120,7 @@ const Register = () => {
     
   </View>
 }
-<CustomButton title='Sign Up' viewStyle={{marginTop:30}}/> 
+<CustomButton title='Sign Up' viewStyle={{marginTop:30}} isLoading={isLoading} onPress={onSignUPPress} /> 
 
 </View>
 </TouchableOpacity>

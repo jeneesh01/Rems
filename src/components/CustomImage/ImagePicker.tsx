@@ -41,7 +41,7 @@ const AddPhoto = ({showModal,setShowModal}:props) => {
         if (response && response.assets && response.assets[0]) {
           console.log('Image URI: ', response.assets[0].uri);
           const url = response.assets[0].uri;
-          dispatch(addPropertyData('property_images',response))
+          dispatch(addPropertyData('property_images',response.assets))
     setShowModal(false)
 
 
@@ -67,7 +67,7 @@ const AddPhoto = ({showModal,setShowModal}:props) => {
       } else {
         if (response && response.assets && response.assets[0]) {
           console.log('Image URI: ', response.assets[0].uri);
-          dispatch(addPropertyData('property_images',response))
+          dispatch(addPropertyData('property_images',response.assets))
     setShowModal(false)
           
         } else {
