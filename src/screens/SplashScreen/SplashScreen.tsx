@@ -3,7 +3,7 @@ import React, {memo, useEffect} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {colors} from '../../util/constant/colors';
 import {images} from '../../util/constant/images';
-import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../util/constant/responsive';
+import { SCREEN_WIDTH} from '../../util/constant/responsive';
 import {useAppDispatch, useAppSelector} from '../../redux/app/store';
 import {useNavigation} from '@react-navigation/native';
 import {navigationProp} from '../../@types/navigation';
@@ -41,7 +41,6 @@ const SplashScreen = () => {
     <View style={{flex:1,backgroundColor:colors.white,alignItems:'center',justifyContent:'center',marginBottom:50}}>
       <SafeAreaView style={{backgroundColor:colors.white}} />
       <Image source={images.LOGO} style={{height:SCREEN_WIDTH/1.5,width:SCREEN_WIDTH/1.5}} resizeMode='contain'/>
-
     </View>
   );
 };

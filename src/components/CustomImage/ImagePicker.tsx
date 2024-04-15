@@ -38,10 +38,10 @@ const AddPhoto = ({showModal,setShowModal}:props) => {
 
         console.error('ImagePicker Error: ', response.errorCode);
       } else {
-        if (response && response.assets && response.assets[0]) {
-          console.log('Image URI: ', response.assets[0].uri);
+        if (response && response.assets && response.assets[0].uri) {
           const url = response.assets[0].uri;
-          dispatch(addPropertyData('property_images',response.assets))
+          
+          dispatch(addPropertyData('property_images',[url]));
     setShowModal(false)
 
 
@@ -65,9 +65,11 @@ const AddPhoto = ({showModal,setShowModal}:props) => {
 
         console.error('ImagePicker Error: ', response.errorCode);
       } else {
-        if (response && response.assets && response.assets[0]) {
-          console.log('Image URI: ', response.assets[0].uri);
-          dispatch(addPropertyData('property_images',response.assets))
+        if (response && response.assets && response.assets[0].uri) {
+
+          const url = response.assets[0].uri;
+
+          dispatch(addPropertyData('property_images',[url]))
     setShowModal(false)
           
         } else {

@@ -32,6 +32,7 @@ const Screen2 = () => {
     dispatch(setCityState({city: '', states: ''}));
   }, []);
 const onSubmitPress=()=>{
+  
   dispatch(
     addProperty(propertyData,success=>{
       if(success){

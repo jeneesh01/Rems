@@ -22,7 +22,6 @@ const initialState: IFormSlice = {
     zip:'',
     price:'',
     sqft:'',
-    _id:Date.now().toString()
     
 
   },
@@ -37,7 +36,6 @@ const initialState: IFormSlice = {
     zip:'',
     price:'',
     sqft:'',
-    _id:Date.now().toString()
 
   }],
 

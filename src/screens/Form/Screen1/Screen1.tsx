@@ -19,7 +19,9 @@ import CustomButton from '../../../components/CustomButton/CustomButton';
 
 const Screen1 = () => {
   const propertyData = useAppSelector((state)=>state.form.propertyDetail);
-  const imageUri = propertyData?.property_images[0]?.uri ?? '';
+  console.log("property data",propertyData);
+  
+  const imageUri = propertyData?.property_images[0] ?? '';
   const [showModal, setShowModal] = useState<boolean>(false);
     const navigation = useNavigation<navigationProp>();
     useEffect(() => {

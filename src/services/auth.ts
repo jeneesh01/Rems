@@ -2,7 +2,7 @@
   
   const login = async (body: any) => {
     return instanceWithoutAuth
-      .post('user/login', body)
+      .post('api/user/login', body)
       .then(res => {
         instanceWithAuth.defaults.headers.common.Authorization = `Bearer ${res.data?.token}`;
         return res.data;
@@ -13,7 +13,7 @@
   };
   const register = async (body: any) => {
     return instanceWithoutAuth
-      .post('user/register', body)
+      .post('api/user/register', body)
       .then(res => {
         instanceWithAuth.defaults.headers.common.Authorization = `Bearer ${res.data?.token}`;
         return res.data;
@@ -25,7 +25,7 @@
   
   const signOut = async () => {
     return instanceWithAuth
-      .patch('api/v1/auth/logout')
+      .patch('api/user/logout')
       .then(res => {
         instanceWithAuth.defaults.headers.common.Authorization = '';
         return res.data;

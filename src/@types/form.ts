@@ -14,7 +14,7 @@ export interface Asset {
   id?: string;
 }
 export interface IPropertyDetail {
-  property_images: Asset[];
+  property_images: any[];
   property_name:string;
   property_type:string;
   address:string;

@@ -43,7 +43,7 @@ const Home = () => {
               <Property item={item} index={index}/>
             )}
             
-            keyExtractor={item => item?._id+item.property_name}
+            keyExtractor={item?._id +item?.property_name}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{paddingBottom: 80, paddingTop: 20}}
             maxToRenderPerBatch={10}

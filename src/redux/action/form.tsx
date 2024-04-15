@@ -21,6 +21,8 @@ export const addPropertyData =
     const transaction = {...transactionDetail, [key]: data};
     dispatch(setPropertyData(transaction));
   };
+
+  
 export const emptyProperty=()=>async(dispatch:AppDispatch,getState:()=>RootState)=>{
    const  propertyDetail= {
         property_images:[],
@@ -33,7 +35,6 @@ export const emptyProperty=()=>async(dispatch:AppDispatch,getState:()=>RootState
         zip:'',
         price:'',
         sqft:'',
-        _id:Date.now().toString()
       }
     dispatch(setPropertyData(propertyDetail));
      

@@ -51,29 +51,29 @@ const Register = () => {
     setUserType(usertype);
   }
   const onSignUPPress=()=>{
-    navigation.reset({
-      index: 0,
-      routes: [{name: 'Drawer'}],
-    });
-    // setIsLoading(true);
-    // dispatch(
-    //   signUp(
-    //     email,
-    //     password,
-    //     Cpassword,
-    //     name,
-    //     userType,
-    //     success => {
-    //       setIsLoading(false);
-    //       if (success) {
-    //         navigation.reset({
-    //           index: 0,
-    //           routes: [{name: 'Drawer'}],
-    //         });
-    //       }
-    //     },
-    //   ),
-    // );
+    // navigation.reset({
+    //   index: 0,
+    //   routes: [{name: 'Drawer'}],
+    // });
+    setIsLoading(true);
+    dispatch(
+      signUp(
+        email,
+        password,
+        Cpassword,
+        name,
+        userType,
+        success => {
+          setIsLoading(false);
+          if (success) {
+            navigation.reset({
+              index: 0,
+              routes: [{name: 'Drawer'}],
+            });
+          }
+        },
+      ),
+    );
   }
   return (
     <LinearGradient
