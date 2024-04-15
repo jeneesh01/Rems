@@ -11,14 +11,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IS_LOGIN, getStorageData } from '../../services/storageHandler/storageHandler';
 import { getPropertiesData } from '../../redux/action/form';
 import BoldText from '../../components/Text/BoldText';
+import { getUserData } from '../../redux/action/auth';
 
 const SplashScreen = () => {
   const navigation = useNavigation<navigationProp>();
   const dispatch = useAppDispatch();
   const getInfo = async () => {
     const isLogin = await getStorageData(IS_LOGIN)
-    if (!isLogin) {
+    if (isLogin) {
       dispatch(getPropertiesData())
+      dispatch(getUserData())
 
       navigation.reset({
         index: 0,

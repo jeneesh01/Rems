@@ -44,7 +44,8 @@ export const loadRecentSearchData = () => async (dispatch: AppDispatch) => {
 
 
 export const getUserData = () => async (dispatch: AppDispatch) => {
-  const user_auth_data = await getStorageData(USER_INFO)
+  const user_auth_data = await getStorageData(USER_INFO);
+  dispatch(setUserInfo(user_auth_data))
 };
 
 export const signIn =

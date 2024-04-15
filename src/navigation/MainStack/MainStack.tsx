@@ -19,7 +19,7 @@ import Home from '../../screens/Home/Home';
 const Stack = createStackNavigator<MainStackParamList>();
 
 const MainStack = () => {
-  const dispatch = useAppDispatch();
+  
 
   return (
     <Stack.Navigator screenOptions={{headerShown:false}}>

@@ -13,7 +13,8 @@ import { IPropertyDetail } from '../../@types/form'
 
 const Home = () => {
   const propertyDetailList = useAppSelector((state)=>state.form.propertyDetailList);
-
+  
+  const useType = useAppSelector((state)=>state.auth?.userInfo);
   const [loading, setLoading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
 
@@ -30,7 +31,10 @@ const Home = () => {
     <View style={styles.container}>
         <SafeAreaView style={{backgroundColor:colors.primary}}/>
         <Header />
+        {
+          useType?.user_type!='Seller' && 
         <HCustomAdd viewStyle={{position:'absolute',bottom:50,right:40}} onPress={onAddIconPress} />
+        }
         {
           propertyDetailList[0]?.property_name.length>0 ?
         <FlatList

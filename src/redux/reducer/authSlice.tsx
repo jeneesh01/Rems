@@ -14,7 +14,7 @@ export interface IAuthSlice {
   states: string;
   recentSearch: {city: string; state: string}[];
   userInfo:any;
-  drawerIndex:number
+  drawerIndex:number;
 }
 
 const initialState: IAuthSlice = {
