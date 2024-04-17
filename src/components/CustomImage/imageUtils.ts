@@ -20,6 +20,8 @@ export const persistImage = async (uri: string): Promise<string> => {
     // Move the image to the persistent location
     const newPath = `${dir}${filename}`;
     await RNFS.moveFile(uri, newPath);
+    console.log("path",newPath);
+    
 
     // Return the persistent URL
     return newPath;

@@ -34,21 +34,15 @@ const getProperty = async (id:string) => {
     });
 };
 const addProperty = async (body:any) => {
-  try {
-    console.log("Body", body);
-    const result = await instanceWithoutAuth.post(`/api/property`, body);
+   return instanceWithAuth
+   .post('property/')
+   .then(result=>{
     return result.data;
-  } catch (err) {
-    if (err.response && err.response.status === 422) {
-      console.log('Validation error:', err.response.data);
-      // You can handle validation errors here, such as displaying them to the user
-    } else {
-      console.log('Error in add data', err);
-      // Handle other types of errors, such as network issues or server errors
-    }
-    // Optionally rethrow the error for the caller to handle
-    throw err;
-  }
+   })
+   .catch(err=>{
+    console.log("Error in add data",err);
+    
+   })
 };
 
 const modifyProperty = async (body: any,id:string) => {
