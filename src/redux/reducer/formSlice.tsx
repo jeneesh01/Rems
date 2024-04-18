@@ -10,7 +10,7 @@ interface IFormSlice {
 
 const initialState: IFormSlice = {
   propertyDetail: {
-    property_images: [],
+    property_images: '',
     property_name: '',
     property_type: '',
     address: '',
@@ -24,7 +24,7 @@ const initialState: IFormSlice = {
   chatData: '',
   propertyDetailList: [
     {
-      property_images: [],
+      property_images: '',
       property_name: '',
       property_type: '',
       address: '',

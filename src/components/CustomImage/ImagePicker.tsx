@@ -25,7 +25,7 @@ const AddPhoto = ({showModal, setShowModal}: props) => {
   const uplaodimage = async (fileName: any, url: string) => {
     try {
       await storage().ref(fileName).putFile(url);
-      dispatch(addPropertyData('property_images', [fileName]));
+      dispatch(addPropertyData('property_images', fileName));
       showMessage({
         message: 'image uploaded successfully',
         type: 'success',

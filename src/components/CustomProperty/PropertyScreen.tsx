@@ -23,15 +23,16 @@ import SemiBoldText from '../Text/SemiBoldText';
 import FastImage from 'react-native-fast-image';
 
 const PropertyScreen = () => {
-  const propertyDetail = useAppSelector(state => state.form.propertyDetail);
-  const number = formatInIndianSystem(propertyDetail.price);
+  const propertyDetails = useAppSelector(state => state.form.propertyDetail);
+  const propertyDetail = propertyDetails?.data;
+  const number = formatInIndianSystem(propertyDetail?.price);
 
   const address = formattedPropertyAddress({
-    address: propertyDetail.address,
-    city: propertyDetail.city,
-    state: propertyDetail.state,
-    country: propertyDetail.country,
-    zip: propertyDetail.zip,
+    address: propertyDetail?.address,
+    city: propertyDetail?.city,
+    state: propertyDetail?.state,
+    country: propertyDetail?.country,
+    zip: propertyDetail?.zip,
   });
   const navigation = useNavigation<navigationProp>();
 
@@ -53,15 +54,15 @@ const PropertyScreen = () => {
             style={{height: 14, width: 20, tintColor: colors.black}}
           />
         </TouchableOpacity>
-        <FastImage
-          source={{uri: propertyDetail.property_images[0]?.uri}}
+        {/* <FastImage
+          source={{uri: propertyDetail.property_images?.uri}}
           resizeMode="contain"
           style={{
             width: SCREEN_WIDTH - 30,
             height: SCREEN_WIDTH - 10,
             borderRadius: 20,
           }}
-        />
+        /> */}
       </View>
       <View style={styles.detailContainer}>
         <View
@@ -71,7 +72,7 @@ const PropertyScreen = () => {
             alignItems: 'center',
           }}>
           <BoldText style={{fontSize: 20}} numberOfLines={2}>
-            {propertyDetail.property_name}
+            {propertyDetail?.property_name}
           </BoldText>
           <BoldText style={{fontSize: 16, marginTop: 0}}>₹ {number}</BoldText>
         </View>
@@ -91,12 +92,12 @@ const PropertyScreen = () => {
           </SemiBoldText>
         </View>
         <SemiBoldText style={{fontSize: 16, marginTop: 5}}>
-          Sqrt: {propertyDetail.sqft}{' '}
+          Sqrt: {propertyDetail?.sqft}{' '}
         </SemiBoldText>
         <SemiBoldText
           style={{fontSize: 16, color: colors.black}}
           numberOfLines={2}>
-          Property Type: {propertyDetail.property_type}
+          Property Type: {propertyDetail?.property_type}
         </SemiBoldText>
       </View>
     </ScrollView>

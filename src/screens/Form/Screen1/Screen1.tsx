@@ -23,7 +23,7 @@ const Screen1 = () => {
   const [uriImage, setUriImage] = useState<string>('');
   useEffect(() => {
     const imageUriset = async () => {
-      const dos = await imagePath(propertyData.property_images[0]);
+      const dos = await imagePath(propertyData.property_images);
       if (dos != uriImage) {
         setUriImage(dos);
       }

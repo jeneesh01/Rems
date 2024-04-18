@@ -28,7 +28,7 @@ const Property = ({item, index}: props) => {
     };
     imageUriset();
   }, []);
-  const number = formatInIndianSystem(item.price);
+  const number = formatInIndianSystem(item?.price);
   const navigation = useNavigation<navigationProp>();
   const dispatch = useAppDispatch();
   const onPropertyPress = () => {
@@ -44,7 +44,7 @@ const Property = ({item, index}: props) => {
         onPress={onPropertyPress}>
         {uriImage ? (
           <FastImage
-            source={{uri: item?.property_images[0]?.uri}}
+            source={{uri: uriImage}}
             resizeMode="cover"
             style={{
               width: SCREEN_WIDTH * 0.3,

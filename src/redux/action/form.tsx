@@ -17,7 +17,7 @@ export const addPropertyData =
 export const emptyProperty =
   () => async (dispatch: AppDispatch, getState: () => RootState) => {
     const propertyDetail = {
-      property_images: [],
+      property_images: '',
       property_name: '',
       property_type: '',
       address: '',

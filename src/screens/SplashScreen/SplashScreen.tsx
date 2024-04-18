@@ -21,7 +21,7 @@ const SplashScreen = () => {
   const dispatch = useAppDispatch();
   const getInfo = async () => {
     const isLogin = await getStorageData(IS_LOGIN);
-    if (!isLogin) {
+    if (isLogin) {
       dispatch(getPropertiesData());
       dispatch(getUserData());
 
