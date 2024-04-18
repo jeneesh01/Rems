@@ -1,4 +1,4 @@
-import { ImagePickerResponse } from "react-native-image-picker";
+import {ImagePickerResponse} from 'react-native-image-picker';
 export interface Asset {
   base64?: string;
   uri?: string;
@@ -15,14 +15,20 @@ export interface Asset {
 }
 export interface IPropertyDetail {
   property_images: any[];
-  property_name:string;
-  property_type:string;
-  address:string;
-  city:string;
-  state:string;
-  country?:string;
-  zip:string;
-  price:string;
-  sqft:string;
-  _id?:string
+  property_name: string;
+  property_type: string;
+  address: string;
+  city: string;
+  state: string;
+  country?: string;
+  zip: string;
+  price: string;
+  sqft: string;
+  _id?: string;
+}
+export interface IChatData {
+  area: string;
+  city: string;
+  state: string;
+  country?: string;
 }

@@ -15,25 +15,19 @@ import HCustomTextInput from '../../../components/CustomTextInput/HCustomTextInp
 import {addPropertyData, emptyProperty} from '../../../redux/action/form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import CustomButton from '../../../components/CustomButton/CustomButton';
-import storage from '@react-native-firebase/storage';
+import {imagePath} from '../../../services/math/imagePath';
 
 const Screen1 = () => {
   const propertyData = useAppSelector(state => state.form.propertyDetail);
-  console.log('predfdfdfdfdfsd', propertyData.property_images);
 
   const [uriImage, setUriImage] = useState<string>('');
   useEffect(() => {
     const imageUriset = async () => {
-      const dos = await storage()
-        .ref(propertyData.property_images[0])
-        .getDownloadURL();
-      console.log('Docss', dos);
-
+      const dos = await imagePath(propertyData.property_images[0]);
       if (dos != uriImage) {
         setUriImage(dos);
       }
     };
-
     imageUriset();
   }, [propertyData]);
 
