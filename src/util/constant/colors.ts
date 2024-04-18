@@ -1,7 +1,11 @@
 export const colors = {
-  primary: '#6a0dad',
-  BackgroundColor: '#fcfafd',
-  DarkBgColor: '#f0e6f6',
+  primary2: '#6a0dad',
+  primary3:'#bca3fb',
+  primary:'#98abfb',
+  primary7:'#6a0dad70',
+  BackgroundColor: '#f5f7ff',
+  DarkBgColor: '#d6ddfd',
+  DarkBgColor7:'#d6ddfd70',
   black: '#000000',
   white: '#ffffff',
   black1: '#00000010',
@@ -18,4 +22,6 @@ export const colors = {
   darkSkeleton: '#CFCFD8',
   EditColor: '#D49D11',
   DropDown: '#4B4B4B',
+  grey:'#808080',
+  DrawerHeader:'#EFF2FF'
 };

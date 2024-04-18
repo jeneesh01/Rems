@@ -1,9 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
-import appReducer from '../reducer/appSlice'
+import appReducer from '../reducer/authSlice'
+import formSlice from '../reducer/formSlice';
 export const store = configureStore({
   reducer: {
-    app:appReducer
+    auth:appReducer,
+    form:formSlice
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
