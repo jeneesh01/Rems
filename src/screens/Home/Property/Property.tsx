@@ -21,10 +21,12 @@ const Property = ({item, index}: props) => {
   const [uriImage, setUriImage] = useState<string>('');
   useEffect(() => {
     const imageUriset = async () => {
-      const dos = await imagePath(item.property_images[0]);
-      if (dos != uriImage) {
-        setUriImage(dos);
-      }
+      console.log('123');
+
+      const dos = await imagePath(item?.property_images);
+      console.log('222', dos);
+
+      setUriImage(dos);
     };
     imageUriset();
   }, []);
@@ -37,66 +39,68 @@ const Property = ({item, index}: props) => {
   };
 
   return (
-    <View key={item?._id + item.property_name}>
-      <TouchableOpacity
-        activeOpacity={1}
-        style={styles.container}
-        onPress={onPropertyPress}>
-        {uriImage ? (
-          <FastImage
-            source={{uri: uriImage}}
-            resizeMode="cover"
-            style={{
-              width: SCREEN_WIDTH * 0.3,
-              height: SCREEN_WIDTH * 0.3,
-              borderRadius: 10,
-            }}
-          />
-        ) : (
-          <Image
-            source={images.LOGO}
-            resizeMode="cover"
-            style={{
-              width: SCREEN_WIDTH * 0.3,
-              height: SCREEN_WIDTH * 0.3,
-              borderRadius: 10,
-            }}
-          />
-        )}
-        <View
-          style={{
-            flex: 1,
-            padding: 10,
-            justifyContent: 'space-between',
-            marginLeft: 5,
-          }}>
-          <View style={{}}>
-            <BoldText style={{fontSize: 18}} numberOfLines={2}>
-              {item.property_name}
-            </BoldText>
-            <View
+    <View key={item?._id + item?.property_name}>
+      {item?.property_state != 'pending' && (
+        <TouchableOpacity
+          activeOpacity={1}
+          style={styles.container}
+          onPress={onPropertyPress}>
+          {uriImage ? (
+            <Image
+              source={{uri: uriImage}}
+              resizeMode="cover"
               style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginTop: 5,
-              }}>
-              <Image
-                source={images.Location}
+                width: SCREEN_WIDTH * 0.3,
+                height: SCREEN_WIDTH * 0.3,
+                borderRadius: 10,
+              }}
+            />
+          ) : (
+            <Image
+              source={images.LOGO}
+              resizeMode="cover"
+              style={{
+                width: SCREEN_WIDTH * 0.3,
+                height: SCREEN_WIDTH * 0.3,
+                borderRadius: 10,
+              }}
+            />
+          )}
+          <View
+            style={{
+              flex: 1,
+              padding: 10,
+              justifyContent: 'space-between',
+              marginLeft: 5,
+            }}>
+            <View style={{}}>
+              <BoldText style={{fontSize: 18}} numberOfLines={2}>
+                {item.property_name}
+              </BoldText>
+              <View
                 style={{
-                  tintColor: colors.primary,
-                  height: 14,
-                  width: 10,
-                  marginRight: 5,
-                }}
-              />
-              <SemiBoldText style={{}} numberOfLines={2}>
-                {item.city} , {item.state}
-              </SemiBoldText>
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginTop: 5,
+                }}>
+                <Image
+                  source={images.Location}
+                  style={{
+                    tintColor: colors.primary,
+                    height: 14,
+                    width: 10,
+                    marginRight: 5,
+                  }}
+                />
+                <SemiBoldText style={{}} numberOfLines={2}>
+                  {item.city} , {item.state}
+                </SemiBoldText>
+              </View>
             </View>
+            <BoldText style={{fontSize: 16}}>₹ {number}</BoldText>
           </View>
-          <BoldText style={{fontSize: 16}}>₹ {number}</BoldText>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

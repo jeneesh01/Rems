@@ -14,7 +14,7 @@ import {
 } from '../../services/storageHandler/storageHandler';
 import {getPropertiesData} from '../../redux/action/form';
 import BoldText from '../../components/Text/BoldText';
-import {getUserData} from '../../redux/action/auth';
+import {getUserData, getUserType} from '../../redux/action/auth';
 
 const SplashScreen = () => {
   const navigation = useNavigation<navigationProp>();
@@ -24,12 +24,15 @@ const SplashScreen = () => {
     if (isLogin) {
       dispatch(getPropertiesData());
       dispatch(getUserData());
+      dispatch(getUserType());
 
       navigation.reset({
         index: 0,
         routes: [{name: 'Drawer'}],
       });
     } else {
+      dispatch(getPropertiesData());
+
       navigation.reset({
         index: 0,
         routes: [{name: 'Auth'}],

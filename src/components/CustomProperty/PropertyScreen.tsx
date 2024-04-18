@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import React, {memo} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {colors} from '../../util/constant/colors';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useAppSelector} from '../../redux/app/store';
@@ -21,18 +21,32 @@ import {
 } from '../../services/math/numberConversion';
 import SemiBoldText from '../Text/SemiBoldText';
 import FastImage from 'react-native-fast-image';
+import {imagePath} from '../../services/math/imagePath';
 
 const PropertyScreen = () => {
   const propertyDetails = useAppSelector(state => state.form.propertyDetail);
-  const propertyDetail = propertyDetails?.data;
-  const number = formatInIndianSystem(propertyDetail?.price);
+  console.log('This ipr', propertyDetails);
+
+  const [uriImage, setUriImage] = useState<string>('');
+  useEffect(() => {
+    const imageUriset = async () => {
+      console.log('123');
+
+      const dos = await imagePath(propertyDetails?.property_images);
+      console.log('222', dos);
+
+      setUriImage(dos);
+    };
+    imageUriset();
+  }, []);
+  const number = formatInIndianSystem(propertyDetails?.price);
 
   const address = formattedPropertyAddress({
-    address: propertyDetail?.address,
-    city: propertyDetail?.city,
-    state: propertyDetail?.state,
-    country: propertyDetail?.country,
-    zip: propertyDetail?.zip,
+    address: propertyDetails?.address,
+    city: propertyDetails?.city,
+    state: propertyDetails?.state,
+    country: propertyDetails?.country,
+    zip: propertyDetails?.zip,
   });
   const navigation = useNavigation<navigationProp>();
 
@@ -54,15 +68,15 @@ const PropertyScreen = () => {
             style={{height: 14, width: 20, tintColor: colors.black}}
           />
         </TouchableOpacity>
-        {/* <FastImage
-          source={{uri: propertyDetail.property_images?.uri}}
+        <Image
+          source={{uri: uriImage}}
           resizeMode="contain"
           style={{
             width: SCREEN_WIDTH - 30,
             height: SCREEN_WIDTH - 10,
             borderRadius: 20,
           }}
-        /> */}
+        />
       </View>
       <View style={styles.detailContainer}>
         <View
@@ -72,7 +86,7 @@ const PropertyScreen = () => {
             alignItems: 'center',
           }}>
           <BoldText style={{fontSize: 20}} numberOfLines={2}>
-            {propertyDetail?.property_name}
+            {propertyDetails?.property_name}
           </BoldText>
           <BoldText style={{fontSize: 16, marginTop: 0}}>₹ {number}</BoldText>
         </View>
@@ -92,12 +106,12 @@ const PropertyScreen = () => {
           </SemiBoldText>
         </View>
         <SemiBoldText style={{fontSize: 16, marginTop: 5}}>
-          Sqrt: {propertyDetail?.sqft}{' '}
+          Sqrt: {propertyDetails?.sqft}{' '}
         </SemiBoldText>
         <SemiBoldText
           style={{fontSize: 16, color: colors.black}}
           numberOfLines={2}>
-          Property Type: {propertyDetail?.property_type}
+          Property Type: {propertyDetails?.property_type}
         </SemiBoldText>
       </View>
     </ScrollView>

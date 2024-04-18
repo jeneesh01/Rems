@@ -3,8 +3,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const IS_LOGIN = 'is_login';
 export const IS_FIRST_TIME = 'is_first_time';
 export const RECENT_SEARCH = 'recent_search';
-export const USER_INFO='user_info';
+export const USER_INFO = 'user_info';
 export const FONT_MULTIPLIER_VALUE = 'font_multiplier_value';
+export const USER_TYPE = 'user_type';
 const getStorageData = async (key: string) => {
   try {
     const get_item = await AsyncStorage.getItem(key);
